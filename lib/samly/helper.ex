@@ -68,7 +68,7 @@ defmodule Samly.Helper do
   end
 
   def decode_idp_auth_resp(sp, saml_encoding, saml_response) do
-    with {:ok, xml_frag} <- decode_saml_payload(saml_encoding, saml_response),
+    with {:ok, xml_frag} <- IO.inspect(decode_saml_payload(saml_encoding, saml_response), label: "decode_saml_payload"),
          {:ok, assertion_rec} <- :esaml_sp.validate_assertion(xml_frag, sp) do
       {:ok, Assertion.from_rec(assertion_rec)}
     else
