@@ -25,6 +25,8 @@ defmodule Samly.RouterUtil do
 
     idp = idp_id && Helper.get_idp(idp_id)
 
+    IO.inspect %{params: conn.params["idp_id_seg"], idp_id: idp_id, idp: idp, get_idp: Helper.get_idp(idp_id), idp_id_from: idp_id_from}
+
     if idp do
       conn |> Conn.put_private(:samly_idp, idp)
     else
